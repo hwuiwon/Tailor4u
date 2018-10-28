@@ -8,13 +8,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
 import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.HitTestResult;
+import com.google.ar.sceneform.Node;
+import com.google.ar.sceneform.collision.Box;
+import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
+import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
@@ -62,6 +69,29 @@ public class MainActivity extends AppCompatActivity {
                     tessa.setParent(anchorNode);
                     tessa.setRenderable(tessaRenderable);
                     tessa.select();
+
+                    // Add Info Card
+                    Node infoCard = new Node();
+                    infoCard.setParent(anchorNode);
+                    infoCard.setLocalPosition(new Vector3(0.0f, 0.85f, 0.18f));
+                    infoCard.setEnabled(true);
+                    ViewRenderable.builder()
+                            .setView(this, R.layout.info_card)
+                            .build()
+                            .thenAccept(
+                                    (renderable) -> {
+                                        infoCard.setRenderable(renderable);
+                                        View infoCardView = renderable.getView();
+                                        TextView nameTextView = infoCardView.findViewById(R.id.info_name);
+                                        nameTextView.setText("Tessa");
+                                        TextView heightTextView = infoCardView.findViewById(R.id.info_height);
+                                        heightTextView.setText("5' 1\"");
+                                    })
+                            .exceptionally(
+                                    (throwable) -> {
+                                        throw new AssertionError("Could not load plane card view.", throwable);
+                                    });
+
                 });
 
     }
