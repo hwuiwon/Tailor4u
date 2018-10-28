@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.ar.sceneform.plugin'
 
 android {
     compileSdkVersion 28
@@ -34,3 +35,9 @@ dependencies {
 
     implementation "com.google.ar.sceneform.ux:sceneform-ux:1.5.1"
 }
+
+
+sceneform.asset('sampledata/tessa.obj',
+        'default',
+        'sampledata/tessa.sfa',
+        'src/main/res/raw/tessa')
