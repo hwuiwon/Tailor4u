@@ -1,7 +1,7 @@
-![Tailor4U Icon](https://raw.githubusercontent.com/kevinpark1217/Tailor4u/master/app/src/main/ic_launcher-web.png | width=25)
 # Tailor4u
 
-Precise, Fashion Recommendation Only For Your Body. 
+Precise, Fashion Recommendation Only For Your Body.  
+![Icon](https://raw.githubusercontent.com/kevinpark1217/Tailor4u/master/app/src/main/res/mipmap-hdpi/ic_launcher.png)
 
 ## Screenshots  
 ![Login](https://raw.githubusercontent.com/kevinpark1217/Tailor4u/master/demoPictures/Log-in.png)
